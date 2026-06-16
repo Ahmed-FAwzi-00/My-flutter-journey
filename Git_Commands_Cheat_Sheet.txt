@@ -1,0 +1,86 @@
+# Git Commands Cheat Sheet (VS Code + GitHub)
+
+## Daily Workflow
+
+### Check repository status
+git status
+Description: Shows modified, staged, and untracked files.
+
+### Download latest changes
+git pull origin master
+Description: Gets the latest changes from GitHub.
+
+### Stage all changes
+git add .
+Description: Adds all changed files to the staging area.
+
+### Create a commit
+git commit -m "Describe your changes"
+Description: Saves a snapshot of your work.
+
+### Upload changes to GitHub
+git push origin master
+Description: Sends your commits to GitHub.
+
+---
+
+## Repository Setup
+
+### Add repository as safe
+git config --global --add safe.directory "D:/NTI Fullter"
+Description: Tells Git to trust this repository.
+
+### View trusted repositories
+git config --global --get-all safe.directory
+Description: Lists all safe repositories.
+
+---
+
+## Branches
+
+### Create and switch to a new branch
+git checkout -b feature-name
+Description: Creates a new branch and switches to it.
+
+### Switch branches
+git checkout master
+Description: Moves to the specified branch.
+
+### Merge a branch
+git checkout master
+git merge feature-name
+Description: Merges changes into master.
+
+---
+
+## History and Comparison
+
+### View commit history
+git log --oneline
+Description: Shows a compact list of commits.
+
+### View file changes
+git diff
+Description: Shows what changed since the last commit.
+
+---
+
+## Remote Repository
+
+### View connected remotes
+git remote -v
+Description: Shows GitHub repository URLs.
+
+### Connect a GitHub repository
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+Description: Links your local project to GitHub.
+
+---
+
+## VS Code Shortcuts
+
+Ctrl + Shift + G
+Description: Open Source Control panel.
+
+Sync Changes
+Description: Pulls and pushes changes using the VS Code interface.
