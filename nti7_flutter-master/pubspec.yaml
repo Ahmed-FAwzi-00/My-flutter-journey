@@ -79,7 +79,6 @@ flutter:
      - family: Lexend_Deca
        fonts:
          - asset: assets/fonts/Lexend_Deca/LexendDeca-Thin.ttf
-
          - asset: assets/fonts/Lexend_Deca/LexendDeca-ExtraLight.ttf
          - asset: assets/fonts/Lexend_Deca/LexendDeca-Light.ttf
          - asset: assets/fonts/Lexend_Deca/LexendDeca-Regular.ttf
