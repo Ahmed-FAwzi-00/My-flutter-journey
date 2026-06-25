@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -79,43 +80,81 @@ class CustomB extends StatelessWidget {
 }
 
 class CustomTextfield extends StatelessWidget {
-  const CustomTextfield({super.key, required this.hintText, this.iconPrifix, this.iconSuffix,  this.obascureText = false, required this.controller});
+  const CustomTextfield({super.key, required this.hintText, this.iconPrifix, this.iconSuffix,  this.obascureText = false,  this.controller});
   final String hintText;
   final Widget? iconPrifix;
   final Widget? iconSuffix;
   final bool obascureText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      style: TextStyle(
-        fontWeight: FontWeight.w300,
-        color: Colors.black,
-        fontSize: 14.sp,
-      ),
-      obscureText: obascureText,
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        filled: true,
-        prefixIcon: iconPrifix,
-        suffixIcon: iconSuffix,
-        hintText: hintText,
-        hintStyle: TextStyle(
-          fontWeight: FontWeight.w200,
-          color: Color(0xffCDCDCD),
+    return SizedBox(
+      height:100.h ,
+      width: double.infinity,
+      child: TextFormField(
+        controller: controller,
+        style: TextStyle(
+          fontWeight: FontWeight.w300,
+          color: Colors.black,
           fontSize: 14.sp,
         ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15.r),
-          borderSide: BorderSide(color: Color(0xffCDCDCD)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15.r),
-          borderSide: BorderSide(color: Color(0xffCDCDCD)),
+        obscureText: obascureText,
+        decoration: InputDecoration(
+          
+          fillColor: Colors.white,
+          filled: true,
+          prefixIcon: iconPrifix,
+          suffixIcon: iconSuffix,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.w200,
+            color: Color(0xffCDCDCD),
+            fontSize: 14.sp,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide: BorderSide(color: Color(0xffCDCDCD)),
+          ),
+           contentPadding: REdgeInsets.symmetric(
+            horizontal: 25.r,
+            vertical: 24.r,
+           ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15.r),
+            borderSide: BorderSide(
+              
+              color: Color(0xffCDCDCD)),
+          ),
         ),
       ),
     );
+  }
+}
+
+Dio dio = Dio(BaseOptions(
+    baseUrl: 'https://ntitodo-production-3c33.up.railway.app/api/'));
+
+
+
+
+handleDioException(Object e, BuildContext context) {
+  if (e is DioException) {
+    var errorResponse = e.response?.data as Map<String, dynamic>;
+    var errorMsg = errorResponse['message'];
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.red,
+        content: Row(
+          children: [
+            Icon(Icons.error, color: Colors.white,),
+            SizedBox(width: 10,),
+            Text(errorMsg, style: TextStyle(
+                color: Colors.white
+            ),),
+          ],
+        )));
+
+  } else {
+    print(e.toString());
   }
 }

@@ -52,9 +52,10 @@ class WelcomeVeiw extends StatelessWidget {
             CustomB(
               text: "let's Start",
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginVeiw()),
+                  MaterialPageRoute(builder:
+                   (context) => LoginVeiw()),
                 );
               },
             ),
